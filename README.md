@@ -4,7 +4,7 @@ to_be_a_clown
 
 <p>
 If you don't get the team name:
-Irene + Taylor = IT
-IT like the clown movie
-IT's occupation is to be a clown (and a killer, but... y'know.)
+<br> Irene + Taylor = IT
+<br> IT like the clown movie
+<br> IT's occupation is to be a clown (and a killer, but... y'know.)
 </p>
