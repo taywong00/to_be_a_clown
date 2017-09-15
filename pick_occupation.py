@@ -28,5 +28,5 @@ def rand_occ():
 #Testing
 x = 100
 while x >1:
-    print(randocc())
+    print randocc()
     x -=1
