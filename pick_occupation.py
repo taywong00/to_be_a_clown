@@ -7,26 +7,29 @@ occupation = { }
 #Reads the given csv file and closes when finished
 with open('occupations.csv', 'r') as f:
     reader = csv.reader(f)
+    previous = 0
     for row in reader:
         #Building dictionary
         try:
-            #Don't want Total to be an option occupation
-            if row[0] != "Total": 
-                occupation[row[0]] = float(row[1])
+            #Removes Total as an option occupation
+            if row[0] != "Total":
+                occupation[row[0]] = float(row[1]) + previous
+                previous = occupation[row[0]]
         #Do nothing to strings that can not be turned to float (e.g. 'Percentage')
         except:
             pass
+    #Reassurance against a non-100 total by resizing all percentages to make the total 100
+    for occ in occupation:
+        occupation[occ] /= previous
 
 #Returns a random occupation based on percentages        
 def rand_occ():
-    while True:
-        for occ in occupation:
-            #If a random float between 0 and 1 is less than the percentage, then the corresponding occupation is returned 
-            if random.random() < (occupation[occ]*0.01):
-                return occ
+    #If a random float between 0 and 1 is less than the percentage, then the corresponding occupation is returned 
+    rand = random.random()
+    for occ in occupation:
+        if occupation[occ] > rand:
+            return occ
 
 #Testing
-x = 100
-while x >1:
-    print randocc()
-    x -=1
+for x in range(100):
+    print(rand_occ())
